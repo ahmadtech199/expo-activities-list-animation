@@ -8,7 +8,7 @@ import { Heading, Paragraph, SubHeading } from "./CustomText";
 import { Line } from "./Line";
 import Animated, {
   AnimatedProps,
-  FadeInUp,
+  FadeInDown,
   FadeOutDown,
   ZoomIn,
 } from "react-native-reanimated";
@@ -30,13 +30,15 @@ export const RenderItem = (params: RenderItemType) => {
   const theme = useTheme();
   return (
     <Animated.View
-      entering={FadeInUp.springify().damping(18).stiffness(200)}
+      entering={FadeInDown.springify().damping(18).stiffness(200)}
       exiting={FadeOutDown}
       style={styles.container}
     >
       <ActivityImage activity={activity} isLast={isLast} />
       {/* To make card animate separate  */}
-      <CardContainer entering={FadeInUp.springify().damping(18).stiffness(200)}>
+      <CardContainer
+        entering={FadeInDown.springify().damping(18).stiffness(200)}
+      >
         <Heading style={{ color: theme.colors.text }}>
           {activity.activity_name}
         </Heading>
@@ -71,7 +73,7 @@ const ActivityImage = (params: ActivityImageType) => {
   const { activity, isLast } = params;
   const theme = useTheme();
   const backgroundColor = activity.activity_color;
-  const imageMargin = 16;
+  const imageMargin = 1;
   return (
     <Animated.View>
       <View
@@ -94,7 +96,7 @@ const ActivityImage = (params: ActivityImageType) => {
       <Line
         style={{
           opacity: isLast ? 0 : 1,
-          marginBottom: -imageMargin - styles.image.height / 2,
+          marginBottom: +imageMargin,
         }}
       />
     </Animated.View>

@@ -19,7 +19,7 @@ export default function RootLayout() {
             title: "Activities",
             //large header style
             headerTransparent: true,
-            headerLargeTitle: true,
+            headerLargeTitle: false,
             headerBlurEffect: "prominent",
             headerShadowVisible: true,
             headerLargeTitleShadowVisible: false,
